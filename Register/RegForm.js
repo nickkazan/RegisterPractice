@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, } from 'react-native';
 import validator from 'validator';
-const express = require('express');
-const app = express.Router();
+//const express = require('express');
+//const app = express.Router();
 
 export default class RegForm extends React.Component {
 
@@ -18,9 +18,9 @@ export default class RegForm extends React.Component {
       }
 
     onPressAction = () => {
-        console.log('Pressed');
         const { emailInputValue } = this.state; 
         const valid = (validator.isEmail(emailInputValue));
+
         if(!this.state.isVisible && valid){
             this.setState({isVisible:true});
             var data = {
@@ -29,14 +29,20 @@ export default class RegForm extends React.Component {
                 "email": this.state.emailInputValue,
                 "password": this.state.passInputValue,
             }
-            fetch('/', {
-                method: 'POST', 
-                //headers: { 
-                  //  Accept: 'application/json',
-                    // 'Content-Type': 'application/json',
-                //},
-                body: JSON.stringify(data),
-            });
+            fetch("http://localhost:3000/", {
+                method: "POST",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body:  JSON.stringify(data)
+            })
+            .then(res => {
+                res.json()
+            })
+            .then(function(data){ 
+            })
+            .catch(error => console.error('Error: ' + error))
         }
     }
 

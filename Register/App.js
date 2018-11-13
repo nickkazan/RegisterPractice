@@ -8,7 +8,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Image style={styles.image}
-          source = {require('/Users/nickkazan/Desktop/JavaScript Practice/RegisterPage/assets/forms.png')}
+          source = {require('/Users/nickkazan/Desktop/JavaScript Practice/Register FE-BE/Register/assets/forms.png')}
         />
         <RegForm/>
       </View>

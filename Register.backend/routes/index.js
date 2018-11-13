@@ -16,11 +16,8 @@ router.post('/', (req,res) => {
     console.log(req);
     const result = createUser(req.body)
     res.send(result);
-
 });
-
 async function createUser(data){
-
     const User = mongoose.model('User', userSchema);
     const user = new User({
         fname: data.fname,
@@ -31,3 +28,4 @@ async function createUser(data){
     const result = await user.save();
     return result;
 }
+module.exports = router;
