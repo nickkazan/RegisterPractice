@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import RegForm from './RegForm';
 
 export default class App extends React.Component {
-
+//Render the form using an image and RegForm
   render() {
     return (
       <View style={styles.container}>

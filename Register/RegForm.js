@@ -1,11 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, } from 'react-native';
 import validator from 'validator';
-//const express = require('express');
-//const app = express.Router();
 
 export default class RegForm extends React.Component {
-
+    //Set values to be used when accepting data from user
     constructor() {
         super();
         this.state = {
@@ -16,7 +14,7 @@ export default class RegForm extends React.Component {
           lnameInputValue: '',
         };
       }
-
+    //On register click, verify data is valid, and use POST to send to backend.
     onPressAction = () => {
         const { emailInputValue } = this.state; 
         const valid = (validator.isEmail(emailInputValue));
@@ -45,8 +43,8 @@ export default class RegForm extends React.Component {
             .catch(error => console.error('Error: ' + error))
         }
     }
-
-  render() {
+//Render the components below the image
+render() {
     return (
       <View style={styles.container}>
 
@@ -96,7 +94,6 @@ const styles = StyleSheet.create({
     container: {
         alignSelf: 'stretch',
     },
-
     header: {
         fontFamily: 'Helvetica',
         textAlign: 'center',
@@ -105,7 +102,6 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         marginBottom: 30,
     },
-
     text: {
         color: '#3c3d34',
         fontFamily: 'Helvetica',
