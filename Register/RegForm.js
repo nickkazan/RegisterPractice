@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, } from 'react-native';
 import validator from 'validator';
+import DropdownAlert from 'react-native-dropdownalert';
 
 export default class RegForm extends React.Component {
     //Set values to be used when accepting data from user
@@ -14,6 +15,7 @@ export default class RegForm extends React.Component {
           lnameInputValue: '',
         };
       }
+
     //On register click, verify data is valid, and use POST to send to backend.
     onPressAction = () => {
         const { emailInputValue } = this.state; 
@@ -83,8 +85,15 @@ render() {
 
         </TouchableOpacity>
         {
-            this.state.isVisible ? <Text style={styles.confirmText}> Your account has been created </Text> : null
+            // this.state.isVisible ? <Text style={styles.confirmText}> Your account has been created </Text> : null
+            this.state.isVisible ? this.dropdown.alertWithType('success', 'Success', "Your account has been created!") : null
         }
+        <TouchableOpacity
+            onPress={this.onLoginClick}
+            underlayColor='white'>
+            <Text style={styles.loginSwitchText}>Already have an account? Login Here</Text>
+        </TouchableOpacity>
+        <DropdownAlert ref={ref => this.dropdown = ref} />
       </View>
     );
   }
@@ -135,4 +144,10 @@ const styles = StyleSheet.create({
         backgroundColor:'#006DF1',
         borderRadius:10,
       },
+    loginSwitchText: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 13,
+        fontFamily: 'Helvetica',
+    },
 });
